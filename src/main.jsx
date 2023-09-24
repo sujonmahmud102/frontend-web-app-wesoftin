@@ -22,7 +22,7 @@ const router = createBrowserRouter([
     path: "details/:id",
     element: <DetailView />,
     loader: async () => {
-      return fetch("../public/data/user.json");
+      return fetch("./user.json");
     },
   }
 ]);

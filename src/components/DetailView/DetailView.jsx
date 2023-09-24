@@ -1,9 +1,21 @@
+import { useEffect, useState } from "react";
 import { Link, useLoaderData, useParams } from "react-router-dom";
 
 
 const DetailView = () => {
     const { id } = useParams();
     const users = useLoaderData();
+    // const [users, setUsers] = useState([])
+
+
+    // const url = 'src/public/data/user.json';
+    // useEffect(() => {
+    //     fetch(url)
+    //         .then(res => res.json())
+    //         .then(data => setUsers(data))
+    // }, [])
+
+    console.log(users)
 
     const user = users.find(u => u.id === parseInt(id));
 

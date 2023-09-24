@@ -11,7 +11,7 @@ const App = () => {
 
 
   useEffect(() => {
-    const url = './public/data/user.json'
+    const url = './user.json'
     fetch(url)
       .then(res => res.json())
       .then(data => {
