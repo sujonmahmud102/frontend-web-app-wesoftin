@@ -1,9 +1,15 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { setSelectedUser } from '../../Redux/features/user/userSlice';
 
 
 const UserList = () => {
-    const users = useSelector((state) => state.users);
+    const { users } = useSelector((state) => state.users);
+    const dispatch = useDispatch();
+
+    const handleSelectUser = (user) => {
+        dispatch(setSelectedUser(user))
+    }
 
 
     return (
@@ -22,7 +28,7 @@ const UserList = () => {
                         <h2 className="text-xl font-semibold text-gray-800">Name: {user.name}</h2>
                         <p className="text-gray-600 mt-2">Email: {user.email}</p>
                         <Link to={`/details/${user.id}`}>
-                            <button className='btn btn-sm btn-accent normal-case text-white mt-3'>View Details </button>
+                            <button onClick={() => handleSelectUser(user)} className='btn btn-sm btn-accent normal-case text-white mt-3'>View Details </button>
                         </Link>
                     </div>
                 ))}

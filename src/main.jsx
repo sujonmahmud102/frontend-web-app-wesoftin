@@ -9,7 +9,6 @@ import {
 import DetailView from './components/DetailView/DetailView.jsx';
 import { Provider } from 'react-redux';
 import store from './Redux/store.js';
-import ProviderContext from './contextApi/ProviderContext.jsx';
 
 
 
@@ -21,18 +20,14 @@ const router = createBrowserRouter([
   {
     path: "details/:id",
     element: <DetailView />,
-    loader: async () => {
-      return fetch("./user.json");
-    },
+
   }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
-      <ProviderContext>
-        <RouterProvider router={router} />
-      </ProviderContext>
+      <RouterProvider router={router} />
     </Provider>
   </React.StrictMode>,
 )

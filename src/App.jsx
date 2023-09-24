@@ -1,13 +1,11 @@
 import { useDispatch } from 'react-redux'
 import './App.css'
 import UserList from './components/UserList/UserList';
-import { setUsers } from './Redux/features/user/userSlice';
-import { useContext, useEffect } from 'react';
-import { ContextUser } from './contextApi/ProviderContext';
+import { useEffect } from 'react';
+import { fetchUsers } from './Redux/features/user/userSlice';
 
 const App = () => {
   const dispatch = useDispatch();
-  const { setShareUsers } = useContext(ContextUser);
 
 
   useEffect(() => {
@@ -15,10 +13,10 @@ const App = () => {
     fetch(url)
       .then(res => res.json())
       .then(data => {
-        setShareUsers(data);
-        dispatch(setUsers(data));
+        // console.log(data)
+        dispatch(fetchUsers(data))
       })
-  }, [])
+  }, [dispatch])
 
 
   return (
